@@ -1,0 +1,227 @@
+'''
+HW 4:
+Write a program that randomly generates a two digit number, prompts the user to enter a two digit number, and prints out how much is won according to the following rules:
+
+If the user's input matches the lottery number in the exact order, the award is $10,000
+If all the digits in the user's input match all the digits in the lottery number but in a different order, the award is $3,000
+If only one digit in the user's input matches one digit in the lottery number, the award is $1,000
+How can we get the individual digits?
+
+Assume num is a 2 digit number. num // 10 gets tens digit. num % 10 gets ones digit.
+
+We can also convert the random number to a string and use the index operator. Leave the user input as a string too.
+
+HINT: Print the random number before prompting for a number. This will make it easier to test. The sample runs do this.
+Sample Run 1
+20
+Enter a two-digit number: 32
+You won $1000 dollars.
+
+Sample Run 2
+96
+Enter a two-digit number: 96
+You won $10000 dollars.
+
+Sample Run 3
+21
+Enter a two-digit number: 12
+You won $3000 dollars.
+'''
+
+from random import randrange
+lottery = randrange(100)
+print(lottery)
+entry = int(input("Enter a two-digit number: "))
+if entry == lottery:
+    print("You won $10000 dollars.")
+elif entry//10 == lottery%10 and entry%10 == lottery//10:
+    print("You won $3000 dollars.")
+elif entry//10 != lottery//10 and entry%10 != lottery%10 and entry//10 != lottery%10 and entry%10 != lottery//10:
+    print("You didn't win.")
+else:
+print("You won $1000 dollars.")
+
+'''
+HW 5:
+Write a program that prompts the user for an integer. Use a looping structure(s) to print out the following output based on the user input.
+
+If the user types 3 print:
+
+*
+**
+*** 
+*** 
+** 
+*
+
+If the user types 5 print:
+
+* 
+** 
+*** 
+**** 
+***** 
+***** 
+**** 
+*** 
+** 
+*
+'''
+
+entry = int(input("Enter an integer: "))
+target = "*"
+for i in range(entry):
+    print(target * (i+1))
+for i in range(entry, 0, -1):
+print(target * i)
+
+'''
+HW 6:
+For this assignment you will write two functions, is_even and is_odd. Both functions will take one argument, an integer.
+
+is_even will return True if the argument is even and False otherwise.
+is_odd will return True if the argument is odd and False otherwise.
+These two functions are examples of predicate functions. Predicate functions return True or False based on the result of testing a condition. They are usually named is_condition, replacing condition with what is being tested.
+
+You will also need to write a loop that iterates through the integers from -10 to 10 and print a statement stating whether the integer is even or odd using the function(s) you wrote.
+
+ 
+
+Sample Run
+
+-10 is even
+
+-9 is odd
+
+-8 is even
+…
+8 is even
+
+9 is odd
+
+10 is even
+'''
+
+def is_even(i):
+    if i%2 == 0:
+        return True
+    else:
+        return False
+def is_odd(i):
+    return not(is_even(i))
+
+def tell_even_odd(i):
+    if is_even(i):
+        print(i, "is even")
+    if is_odd(i):
+        print(i, "is odd")
+
+n = -10
+while n < 11:
+    tell_even_odd(n)
+n += 1
+
+'''
+HW 7:
+Write a function called min2 that takes two arguments. The second argument should be a default argument with a default value of 0. The function will RETURN the minimum of the 2 arguments. Prompt the user for two integers. Call the function with the first number typed and no second argument. Print the results. Call the function again with both numbers the user types. Print the results.
+
+Sample Run:
+
+Enter an int:  11
+Enter an int:  3
+The minimum of 11 and 0 is 0
+The minimum of 11 and 3 is 3
+'''
+
+def min2(num1, num2=0):
+    print("The minimum of", num1, "and", num2, "is", min(num1, num2))
+    return min(num1, num2)
+int1=int(input("Enter an int:"))
+int2=int(input("Enter an int:"))
+min2(int1)
+min2(int1, int2)
+
+'''
+Lab 7:
+Write a function that takes a string argument and prints the index, a colon, and the character at that index. Prompt the user for a string and call the function with the string the user enters as an argument.
+
+Here is how a call to the function should work.
+
+print_it("hello")
+
+0: h
+1: e
+2: l
+3: l
+4: o
+'''
+
+def print_it(s):
+    list1 = list(s)
+    for i in range(0, len(s)):
+        print(i, ": ", list1[i], sep="")
+
+entry = input("Enter a string: ")
+print_it(entry)
+
+'''
+Proj 2:
+Modify programming project 1 so that it includes a prompt that asks how many employees will be entered. Use a looping structure to get input (a string and two floats) and print output for the number of employees the user enters for the first prompt. Calculate the cumulative total to be paid for employees entered. Calculate the average pay for the employees entered. Print both results.
+
+Sample Run:
+
+How many employees do you want to enter? 3
+
+ 
+
+Enter a name: Guido van Rossum
+
+Enter hours worked: 42.5
+
+Enter hourly rate: 285.11
+
+Guido van Rossum should be paid $12,473.56
+
+ 
+
+Enter a name: Blaise Pascal
+
+Enter hours worked: 45
+
+Enter hourly rate: 294
+
+Blaise Pascal should be paid $13,965.00
+
+ 
+
+Enter a name: Charles Babbage
+
+Enter hours worked: 51
+
+Enter hourly rate: 268
+
+Charles Babbage should be paid $15,142.00
+
+ 
+
+The total amount to be paid is $41,580.56
+
+The average employee is paid $13,860.19
+'''
+
+n = int(input("How many employees do you want to enter?"))
+total = 0
+for _ in range(n):
+    name = input("Enter a name: ")
+    hours = float(input("Enter hours worked: "))
+    rate = float(input("Enter hourly rate: "))
+    paycheck = float()
+    if hours > 40:
+        paycheck = rate*40 + (hours-40)*rate*1.5
+    else:
+        paycheck = rate*hours
+    print("{} should be paid ${:,.2f}\n". format(name, paycheck))
+    total += paycheck
+print("The total amount to be paid is ${:,.2f}". format(total))
+print("The average employee is paid ${:,.2f}". format(total/n))
+
