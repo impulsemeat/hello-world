@@ -1,0 +1,158 @@
+'''
+HW 1:
+This assignment was locked Jan 26 at 11:59pm.
+Write a Python program that prints your name, CS classes taken, and the date on separate lines. Use one variable each for the month, day, and year (3 total). Make sure there are no spaces between the forward slash and numbers. Submit the .py file.
+ 
+Sample Run:
+My name is Steven Allbee
+I have taken CS 10 - Python Programming
+Today's date is 1/21/17
+'''
+
+MyName = "William Hu"
+Month = 1
+Day = 23
+Year = 2018
+print("My name is ", MyName)
+print("I have taken CS 10 - Python Programming")
+print("Today's date is ", Month, "/", Day, "/", Year, sep="")
+
+'''
+HW 2:
+Write a Python program that prompts a user for two integers and stores the two integers the user types into the shell. Print the product, float division, integer division, remainder, sum, and difference of the two integers to the console. The entire equation must be printed (see below for formatting). Only display 2 digits after the decimal place for results that are floats. Only submit the .py file.
+Sample Run 1:
+Enter an integer: 5
+Enter another integer: 4
+5  *  4  =  20
+5  /  4  =  1.25
+5  //  4  =  1
+5  %  4  =  1
+5  +  4  =  9
+5  -  4  =  1 
+ 
+Sample Run 2:
+Enter an integer: 1
+Enter another integer: 3
+1  *  3  =  3
+1  /  3  =  0.33
+1  //  3  =  0
+1  %  3  =  1
+1  +  3  =  4
+1  -  3  =  -2
+'''
+
+num1 = int(input("Enter an integer: "))
+num2 = int(input("Enter another integer "))
+print("{} * {} = {}". format(num1, num2, num1 * num2))
+print("{} / {} = {:.2f}". format(num1, num2, num1 / num2))
+print("{} // {} = {}". format(num1, num2, num1 // num2))
+print("{} % {} = {}". format(num1, num2, num1 % num2))
+print("{} + {} = {}". format(num1, num2, num1 + num2))
+print("{} - {} = {}". format(num1, num2, num1 - num2))
+
+'''
+HW 3:
+Write a Python program that prompts the user for the base and height of two triangles. Calculate the area of both triangles (1/2 * base * height) and print a statement saying which triangle has a larger area.
+
+Sample Run 1
+Enter the base for the first triangle:  2
+Enter the height for the first triangle:  3
+Enter the base for the second triangle:  1
+Enter the height for the second triangle:  2
+The first triangle has the largest area. 
+
+Sample Run 2
+Enter the base for the first triangle:  1
+Enter the height for the first triangle:  2
+Enter the base for the second triangle:  2
+Enter the height for the second triangle:  3
+The second triangle has the largest area.
+
+Sample Run 3
+Enter the base for the first triangle:  1
+Enter the height for the first triangle:  2
+Enter the base for the second triangle:  1
+Enter the height for the second triangle:  2
+The triangles have the same area.
+'''
+
+base1 = float(input("Enter the base for the first triangle:  "))
+height1 = float(input("Enter the height for the first triangle:  "))
+base2 = float(input("Enter the base for the second triangle:  "))
+height2 = float(input("Enter the height for the second triangle:  "))
+if base1*height1 > base2*height2:
+    print("The first triangle has the largest area.")
+elif base1*height1 < base2*height2:
+    print("The second triangle has the largest area.")
+else:
+print("The triangles have the same area.")
+
+#Proj 1:
+
+name = input("Enter a name: ")
+hours = float(input("Enter hours worked: "))
+rate = float(input("Enter hourly rate: "))
+paycheck = float()
+if hours > 40:
+    paycheck = rate*40 + (hours-40)*rate*1.5
+else:
+    paycheck = rate*hours
+print("{} should be paid ${:,.2f}". format(name, paycheck))
+
+#You are the head programmer at Python Inc.
+#You are tasked with writing a program to take input for an employee.
+#Prompt the user for a name, hours worked, and hourly rate.
+#If the employee works over 40 hours, they should receive 1.5 times
+#their hourly rate for all hours worked over 40.
+#Print the employee name and the amount the employee should be paid.
+#Display the payment amount with two digits after the decimal place and commas.
+#Only submit the .py file.
+#Sample Run:
+
+#Enter a name: Guido van Rossum
+
+#Enter hours worked: 42.5
+
+#Enter hourly rate: 285.11
+
+#Guido van Rossum should be paid $12,473.56
+
+#Lab 1:
+#A ball is thrown at a 45° angle from a height of 5 ft with an initial velocity of 75 ft/s. 
+#The height of the ball at time t can be approximated by the equation y = -16t2 + 53t + 5. Find the height of the ball at t = 2 s.
+
+t = float(input("Enter a time in seconds to find the height of the ball: "))
+y = -16*t**2 + 53*t + 5
+print("The height at {}s is {}". format(t, y))
+
+#Lab 2:
+#name = 'grace hopper'
+#Use string concatenation and the indexing operator to construct 3 words from the string name. Print each word.
+
+name = "grace hopper"
+namelist=list(name)
+word1= namelist[0]+ namelist[2]+ namelist[8] #gap
+word2= namelist[2]+ namelist[1]+ namelist[4] #are
+word3= namelist[8]+ namelist[7]+ namelist[9] #pop
+print(word1, word2, word3)
+
+'''
+Lab 3:
+Create a list or tuple with 5 different integers. Prompt the user for an integer. If the number is in the list (or tuple) print a message stating the number was found. Otherwise, print a message stating the number was not found.
+Assume the list (or tuple) includes the numbers 0, 2, 4, 6, 8, and 10.
+Sample Run 1:
+Enter an int:  7
+That number is not in the list.
+
+Sample Run 2:
+Enter an int:  6
+That number is in the list.
+'''
+
+numbers = [0, 2, 4, 6, 8, 10]
+entry = int(input("Enter an int: "))
+if entry in numbers:
+    print("The number is in the list.")
+else:
+print("The number is not in the list.")
+
